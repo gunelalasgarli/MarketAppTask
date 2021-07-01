@@ -10,7 +10,7 @@ namespace SecondConsoleApp.Models
     {
         public int no { get; set; }
         public Product product { get; set; }
-        public static int count { get; set; }
+        public static int count { get; set; } 
 
     }
 }
