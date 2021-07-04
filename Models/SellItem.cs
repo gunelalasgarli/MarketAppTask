@@ -9,26 +9,31 @@ namespace SecondConsoleApp.Models
     class SellItem
     {
         public int SellItemNo { get; set; }
-        public Product SellItemProduct { get; set; }
-        public static int SellItemCount { get; set; } 
+        public string SellItemName { get; set; }
+        public int SellItemCount { get; set; } 
         public static int Count { get; set; }
 
-        public SellItem(int sellitemno,Product sellitemproduct, int count)
+        public SellItem(string sellitemname, int sellitemcount)
         {
-        
+
             Count++;
-            SellItemCount += Count;
-        
+            SellItemNo = Count;
+            SellItemName = sellitemname;
+            SellItemCount = sellitemcount;
+        }
+        public SellItem(int sellitemno, int sellitemcount)
+        {
+            SellItemNo = sellitemno;
+            SellItemCount = sellitemcount;
         }
 
         public override string ToString()
         {
 
-            return $"{SellItemProduct}, {SellItemNo}, {SellItemCount}";
+            return $"{SellItemName}, {SellItemNo}, {SellItemCount}";
 
         }
 
     }
-
-
+   
 }

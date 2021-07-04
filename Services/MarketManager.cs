@@ -11,43 +11,126 @@ namespace SecondConsoleApp.Services
 {
     class MarketManager : IMarketable
     {
+        public List<Sell> Sells { get; set; }
+        public List<SellItem> Sellitem { get; set; }
         List<Product> Products { get; set; }
-        List<Product> IMarketable.Products 
-        {
-            get => throw new NotImplementedException(); 
-            set => throw new NotImplementedException(); 
-        }
-        List<Sell> SoldProduct { get; set; }
-        List<Sell> IMarketable.SoldProduct 
+        public List<SellItem> SellItem 
         {
             get => throw new NotImplementedException(); 
             set => throw new NotImplementedException(); 
         }
 
-        public void AddProduct(string name, double price, Category category, string code)
+        public MarketManager()
+        {
+            Sells = new List<Sell>();
+            Products = new List<Product>();
+
+
+        }
+
+
+        public void AddSell(int sellitemno, int sellitemcount)
+        {
+
+
+            var sellItem = SellItem.Find(s => s.SellItemNo == sellitemno && s.SellItemCount == sellitemcount);
+            if (sellitemno <= 0 || sellitemcount <= 0)
+            {
+                throw new ArgumentNullException("sellitem not found");
+            }
+            else
+            {
+                Sell sell = new Sell(SellItem);
+                Sells.Add(sell);
+            }
+
+
+        }
+
+        public SellItem ReturnSellItem(int sellitemno)
         {
             throw new NotImplementedException();
         }
 
-        public void SellItem(int sellitemno, Product sellitemproduct, int count)
+        public Sell ReturnSell(string sellno, SellItem sellItem)
         {
             throw new NotImplementedException();
         }
 
-        public void AddSell(int SellNo, double Amount, string datetime, SellItem sellItem )
-        {
-        }
-
-        public void GetSell(int SellNo, SellItem sellItem)
+        public List<Sell> ReturnAllSells(string ordertime, string ordertime2)
         {
             throw new NotImplementedException();
         }
 
-        public void Sell(byte startday, byte startmonth, int startyear, byte endday, byte endmonth, int endyear, List<Product> SoldProduct)
+        public List<Sell> ReturnSells(string selltime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Sell> ReturnValueSells(double value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Sell ReturnNoSells(string orderno)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddProduct(string productname, double productvalue, Category productcategory, int productcount)
+        {
+            Product whiskey = new Product(productname, productvalue, productcategory, productcount);
+            Products.Add(whiskey);
+
+
+
+        }
+
+        public void EditProduct(string productcode, string newproductcode)
+        {
+            Product product = Products.Find(s => s.ProductCode == productcode);
+            if (product.ProductCode == productcode)
+            {
+                productcode = newproductcode;
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+
+
+        }
+
+        public List<Product> ReturnProducts(Category category)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> ReturnValueProducts(double value1, double value2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> SearchProducts(string productname)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void RemoveProduct(string productcode)
+        {
+            foreach (Product item in Products)
+
+                if (item.ProductCode == productcode)
+                {
+                    Products.Remove(item);
+                }
+
+        }
+
+        public Sell ReturnNoSell(string sellno)
         {
             throw new NotImplementedException();
         }
     }
-
-
 }

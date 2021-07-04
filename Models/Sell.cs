@@ -12,6 +12,8 @@ namespace SecondConsoleApp.Models
         public int SellNo { get; set; }
         public double Amount { get; set; }
         public SellItem SellItem;
+        private List<SellItem> sellItem;
+
         public string Datetime { get; set; }
        
         public List<Sell> SoldProduct { get; set; }
@@ -20,6 +22,11 @@ namespace SecondConsoleApp.Models
             Count++;
             Datetime = day.ToString() + month.ToString() + year.ToString();
             SoldProduct = new List<Product>();
+        }
+
+        public Sell(List<SellItem> sellItem)
+        {
+            this.sellItem = sellItem;
         }
     }
     

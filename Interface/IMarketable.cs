@@ -10,31 +10,23 @@ namespace SecondConsoleApp.Interface
 {
     interface IMarketable
     {
-        //       IMarketable
+    
+            List<Sell> Sells { get; set; }
+            List<SellItem> SellItem { get; set; }
 
-        //- Satislar
-        //- Mehsullar
-        //- Satis elave etmek - satis elave edilerken hansi mehsullardan hansi sayda satis oldugu gonderilir
-        //- Satisdan mehsulun geri qaytarilmasi
-        //- Umumi satisin geri qaytarilmasi
-        //- Verilen tarix araligina gore hemin tarix araligina olan satislarin qaytarilmasi
-        //- Verilen bir tarixe gore hemin tarix(il, ay, gun) ucun olan satislarin qaytarilmasi
-        //- Verilmis mebleg araligina gore edilmis satislarin qaytarilmasi
-        //- Verilmis nomreye esasen satisin qaytarilmasi
-        //- Yeni mehsul elave etmek
-        //- Mehsulun adini, sayini ve meblegini, categoriyasini deyismek(code-a gore tapilacaq)
-        //- Verilmis kateqoriyaya esasen hemin kateqoriyada olan mehsullarin qaytarilmasi
-        //- Verilmis qiymet araligina esasen hemin araliqda olan mehsullarin qaytarilmasi
-        //- Verilmis ada esasen mehsullarin search edilib qaytarilmasi
+            void AddSell(int sellitemno, int sellitemcount);
+            SellItem ReturnSellItem(int orderitemno);
+            Sell ReturnSell(string orderno, SellItem sellitem);
+            List<Sell> ReturnAllSells(string selltime, string selltime2);
+            List<Sell> ReturnSells(string selltime);
+            List<Sell> ReturnValueSells(double value);
+            Sell ReturnNoSell(string sellno);
+            void AddProduct(string productname, double productvalue, Category productcategory, int productcount);
+            void EditProduct(string productcode, string newproductcode);
+            List<Product> ReturnProducts(Category category);
+            List<Product> ReturnValueProducts(double value1, double value2);
+            List<Product> SearchProducts(string productname);
 
-        List<Product> Products { get; set; }
-        List<Sell> SoldProduct { get; set; }
-        void SellItem(int sellitemno, Product sellitemproduct, int count);
-        void AddProduct(string name, double price, Category category, string code);
-        void AddSell(int SellNo, double Amount, string datetime, SellItem sellItem);
-        void GetSell(int SellNo, SellItem sellItem);
-        //void Sell(byte startday, byte month, int year, List<Product> SoldProduct);
-
-
+         
     }
 }
