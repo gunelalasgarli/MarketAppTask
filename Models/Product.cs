@@ -25,6 +25,7 @@ namespace SecondConsoleApp.Models
             Code = Name.ToUpper().Substring(0, 2) + Count.ToString();
         }
 
+
         public override string ToString()
         {
             return $"{Name} {Price} {Categories} {Count} {Code}  ";

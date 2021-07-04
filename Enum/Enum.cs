@@ -10,7 +10,7 @@ namespace SecondConsoleApp.Enum
     enum Category:byte
     {
         drinks,
-        dairy_eggs,
+        dairy,
         bakery,
         sweets,
         cigarettes,

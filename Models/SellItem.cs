@@ -8,9 +8,27 @@ namespace SecondConsoleApp.Models
 {
     class SellItem
     {
-        public int no { get; set; }
-        public Product product { get; set; }
-        public static int count { get; set; } 
+        public int SellItemNo { get; set; }
+        public Product SellItemProduct { get; set; }
+        public static int SellItemCount { get; set; } 
+        public static int Count { get; set; }
+
+        public SellItem(int sellitemno,Product sellitemproduct, int count)
+        {
+        
+            Count++;
+            SellItemCount += Count;
+        
+        }
+
+        public override string ToString()
+        {
+
+            return $"{SellItemProduct}, {SellItemNo}, {SellItemCount}";
+
+        }
 
     }
+
+
 }
