@@ -10,11 +10,11 @@ namespace SecondConsoleApp.Models
     {
         public static int Count { get; set; }
         public int SellNo { get; set; }
-        public double Amount { get; set; }
+        public double SellPrice { get; set; }
         public SellItem SellItem;
         private List<SellItem> sellItem;
 
-        public string Datetime { get; set; }
+        public string DateTime { get; set; }
        
         public List<Sell> SoldProduct { get; set; }
         public Sell(byte day, byte month, int year, List<Product> SoldProduct) //sell methodu ucun lazim olunanlarr elave edildi

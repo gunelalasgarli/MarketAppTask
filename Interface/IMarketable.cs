@@ -10,23 +10,24 @@ namespace SecondConsoleApp.Interface
 {
     interface IMarketable
     {
-    
-            List<Sell> Sells { get; set; }
-            List<SellItem> SellItem { get; set; }
 
-            void AddSell(int sellitemno, int sellitemcount);
-            SellItem ReturnSellItem(int orderitemno);
-            Sell ReturnSell(string orderno, SellItem sellitem);
-            List<Sell> ReturnAllSells(string selltime, string selltime2);
-            List<Sell> ReturnSells(string selltime);
-            List<Sell> ReturnValueSells(double value);
-            Sell ReturnNoSell(string sellno);
-            void AddProduct(string productname, double productvalue, Category productcategory, int productcount);
-            void EditProduct(string productcode, string newproductcode);
-            List<Product> ReturnProducts(Category category);
-            List<Product> ReturnValueProducts(double value1, double value2);
-            List<Product> SearchProducts(string productname);
 
-         
+        List<Sell> Sells { get; set; }
+        List<SellItem> sellItems { get; set; }
+        void AddSell(int sellItemNo, int sellItemcount);
+        List<Sell> ReturnSellitem();
+        void ReturnSell(int sellNo, string sellitem);
+        List<Sell> ReturnAllSells(string selltime, string selltime2);
+        List<Sell> ReturnSells(string selltime);
+        List<Sell> ReturnValueSells(double value);
+        Sell ReturnNoSells(int sellNo);
+        void AddProduct(string name, double price, string catagory, string code);
+        void EditProduct(int productCode, int newProductCode);
+        List<Product> ReturnProduct(string catagory);
+        List<Product> ReturnValueProducts(double value1, double value2);
+        List<Product> SearchProduct(string productName);
+
+
+
     }
 }

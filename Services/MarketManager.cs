@@ -12,20 +12,18 @@ namespace SecondConsoleApp.Services
     class MarketManager : IMarketable
     {
         public List<Sell> Sells { get; set; }
-        public List<SellItem> Sellitem { get; set; }
-        List<Product> Products { get; set; }
-        public List<SellItem> SellItem 
-        {
-            get => throw new NotImplementedException(); 
-            set => throw new NotImplementedException(); 
+        public List<SellItem> sellItems { get; set; }
+        public List<Product> Products { get; set; }
+        public List<SellItem> SellItem
+        { get => throw new NotImplementedException();
+          set => throw new NotImplementedException();
         }
 
         public MarketManager()
         {
-            Sells = new List<Sell>();
             Products = new List<Product>();
-
-
+            Sells = new List<Sell>();
+            sellItems = new List<SellItem>();
         }
 
 
@@ -47,90 +45,110 @@ namespace SecondConsoleApp.Services
 
         }//satish elave etmek methodu
 
-        public SellItem ReturnSellItem(int sellitemno)
+        public List<Sell> ReturnSellitem()
         {
-            throw new NotImplementedException();
+            return Sells.ToList();
+        }
+        public void ReturnSell(int sellNo, string sellitemname)
+        {
+            var sell1 = sellItems.Find(a => a.SellItemNo == sellNo && a.SellitemName == sellitemname);
+            Console.WriteLine(sell1.SellitemName, sell1.SellItemNo);
         }
 
-        public Sell ReturnSell(string sellno, SellItem sellItem)
+        public List<Sell> ReturnAllSells(string selltime, string selltime2)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(selltime))
+                throw new ArgumentNullException("Zaman daxil olunmayib");
+            if (string.IsNullOrEmpty(selltime2)) throw new ArgumentNullException("there is no time");
+            Sell sell5 = Sells.Find(s => s.DateTime == selltime && s.DateTime == selltime2);
+            return ReturnAllSells (selltime, selltime2);
         }
-
-        public List<Sell> ReturnAllSells(string ordertime, string ordertime2)
-        {
-            throw new NotImplementedException();
-        }
-
+    
         public List<Sell> ReturnSells(string selltime)
         {
-            throw new NotImplementedException();
+            Sell sell4 = Sells.Find(a => a.DateTime == selltime);
+            return ReturnSells(selltime);
         }
 
         public List<Sell> ReturnValueSells(double value)
         {
-            throw new NotImplementedException();
+            var sell3 = Sells.Find(a => a.SellPrice == value);
+
+            return Sells.ToList();
         }
 
-        public Sell ReturnNoSells(string orderno)
+        public Sell ReturnNoSells(int sellNo)
         {
-            throw new NotImplementedException();
+            var sell1 = Sells.Find(a => a.SellNo == sellNo);
+            return sell1;
         }
 
-        public void AddProduct(string productname, double productvalue, Category productcategory, int productcount)
+        public void AddProduct(string name, double price, string category, string code)
         {
-            Product whiskey = new Product(productname, productvalue, productcategory, productcount);
-            Products.Add(whiskey);
-
-
+            int temp = 0;
+            var categories = Enum.GetValues(Category);
+            foreach (var category in categories)
+            {
+                if (category.ToLower() == category.ToString().ToLower())
+                {
+                    temp = 1;
+                    break;
+                }
+            }
+            if (temp == 0)
+                throw new KeyNotFoundException("There is no such category");
+            Product product1 = new Product(name, price, category, code);
+            Products.Add(product1);
 
         }//mehsul elave etmek methodu
 
-        public void EditProduct(string productcode, string newproductcode)
+        public void EditProduct(int productcode, int newproductCode)
         {
-            Product product = Products.Find(s => s.ProductCode == productcode);
-            if (product.ProductCode == productcode)
+            var product1 = Products.Find(a => a.Code == productcode);
+            if (product1.Code == productcode)
             {
-                productcode = newproductcode;
+                productcode = newproductCode;
+                Products.Add(product1);
+
+
             }
             else
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException("wrong ProductCode");
             }
+        }  //mehsulu editlemek methodu
 
-
-        }//mehsulu editlemek methodu
-
-        public List<Product> ReturnProducts(Category category)
+        public List<Product> ReturnProduct(string catagory)
         {
-            throw new NotImplementedException();
+            var product = Products.Find(d => d.Catagories == catagory);
+            return ReturnProduct(catagory);
         }
 
         public List<Product> ReturnValueProducts(double value1, double value2)
         {
-            throw new NotImplementedException();
+            Product produc = Products.Find(s => s.Price == value1 && s.Price == value2);
+            return ReturnValueProducts(value1, value2);
         }
 
-        public List<Product> SearchProducts(string productname)
+        public List<Product> SearchProduct(string productName)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(productName))
+                throw new ArgumentNullException("product name");
+            var product = Products.Find(d => d.Name == productName);
+            if (product == null) throw new ArgumentNullException("there are no products with the given name");
+            return SearchProduct(productName);
+
+        }
+        //additional Method
+        public void Remove(int productCode)
+        {
+            if (productCode <= 1000) throw new ArgumentOutOfRangeException("product Code");
+            if (Products == null)
+                throw new KeyNotFoundException("There are no products with the given code");
+            Product product = Products.Find(s => s.Code == productCode);
+            Products.Remove(product);
         }
 
 
-        public void RemoveProduct(string productcode)
-        {
-            foreach (Product item in Products)
-
-                if (item.ProductCode == productcode)
-                {
-                    Products.Remove(item);
-                }
-
-        }//mehsul silmek methodu
-
-        public Sell ReturnNoSell(string sellno)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

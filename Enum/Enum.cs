@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SecondConsoleApp.Enum
 {
  
-    enum Category:byte
+   public enum Category
     {
         drinks,
         dairy,

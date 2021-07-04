@@ -9,34 +9,28 @@ namespace SecondConsoleApp.Models
 {
     class Product
     {
-        public string ProductName { get; set; }
-        public double ProductValue { get; set; }
-        public Category ProductCategory { get; set; }
+        public string Name;
+        public double Price { get; set; }
+        public static int Count { get; set; } = 1000;
         public int ProductCount { get; set; }
-        public string ProductCode { get; set; }
-        private static int _Count = 1000;
-
-
-
-
-
-        public Product(string productname, double productvalue, Category productcategory, int productcount)
+        public int Code { get; set; }
+        public string Catagories { get; set; }
+        public Product(string name, double price, string catagory, string code)
         {
-            ProductName = productname;
-            ProductValue = productvalue;
-            ProductCategory = productcategory;
-            ProductCount = productcount;
+            Count++;
 
 
-
-            ProductCode = productname.Substring(0, 2).Trim() + _Count.ToString();
-
-
+            Name = name;
+            Catagories = catagory;
+            Price = price;
+            code = Name.Substring(0, 2).ToUpper() + Count;
         }
-
         public override string ToString()
         {
-            return $"{ ProductName} { ProductValue } {ProductCategory} {ProductCount}";
+            return $" Name:{Name}/  Catagory:{Catagories}/    Price: {Price}/   Code:{Code}/";
         }
 
     }
+
+
+}
