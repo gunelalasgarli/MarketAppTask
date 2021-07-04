@@ -58,7 +58,7 @@ namespace SecondConsoleApp.Services
         public List<Sell> ReturnAllSells(string selltime, string selltime2)
         {
             if (string.IsNullOrEmpty(selltime))
-                throw new ArgumentNullException("Zaman daxil olunmayib");
+                throw new ArgumentNullException("Please enter time");
             if (string.IsNullOrEmpty(selltime2)) throw new ArgumentNullException("there is no time");
             Sell sell5 = Sells.Find(s => s.DateTime == selltime && s.DateTime == selltime2);
             return ReturnAllSells (selltime, selltime2);
