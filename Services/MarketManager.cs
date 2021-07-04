@@ -45,7 +45,7 @@ namespace SecondConsoleApp.Services
             }
 
 
-        }
+        }//satish elave etmek methodu
 
         public SellItem ReturnSellItem(int sellitemno)
         {
@@ -84,7 +84,7 @@ namespace SecondConsoleApp.Services
 
 
 
-        }
+        }//mehsul elave etmek methodu
 
         public void EditProduct(string productcode, string newproductcode)
         {
@@ -99,7 +99,7 @@ namespace SecondConsoleApp.Services
             }
 
 
-        }
+        }//mehsulu editlemek methodu
 
         public List<Product> ReturnProducts(Category category)
         {
@@ -126,7 +126,7 @@ namespace SecondConsoleApp.Services
                     Products.Remove(item);
                 }
 
-        }
+        }//mehsul silmek methodu
 
         public Sell ReturnNoSell(string sellno)
         {

@@ -17,7 +17,7 @@ namespace SecondConsoleApp.Models
         public string Datetime { get; set; }
        
         public List<Sell> SoldProduct { get; set; }
-        public Sell(byte day, byte month, int year, List<Product> SoldProduct) 
+        public Sell(byte day, byte month, int year, List<Product> SoldProduct) //sell methodu ucun lazim olunanlarr elave edildi
         {
             Count++;
             Datetime = day.ToString() + month.ToString() + year.ToString();

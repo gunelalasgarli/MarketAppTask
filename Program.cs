@@ -8,7 +8,7 @@ namespace Market_console_app
         {
             static void Main(string[] args)
             {
-                MarketManager m1 = new MarketManager();
+                MarketManager mm1 = new MarketManager();
 
 
                 string answer;
@@ -20,7 +20,7 @@ namespace Market_console_app
 
 
                     Console.WriteLine("1   - Use Products Operations");
-                    Console.WriteLine("2   - Use Order Oper=ations");
+                    Console.WriteLine("2   - Use Sell Operations");
                     Console.WriteLine("3   - Exit");
 
                     Console.WriteLine("\n Use appropriate choice. :");
@@ -43,13 +43,13 @@ namespace Market_console_app
                                 {
 
                                     case "1.1":
-                                        AddOrder(m1);
+                                        AddOrder(mm1);
                                         break;
                                     case "1.2":
-                                        EditProduct(m1);
+                                        EditProduct(mm1);
                                         break;
                                     case "1.3":
-                                        RemoveProduct(m1);
+                                        RemoveProduct(mm1);
                                         break;
                                 }
                                 break;
@@ -63,29 +63,29 @@ namespace Market_console_app
 
 
             }
-            static void AddOrder(MarketManager m1)
+            static void AddOrder(MarketManager mm1)
             {
                 Console.WriteLine("Enter sell product Number");
                 int sellitemno = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter sell product Count");
                 int sellitemcount = int.Parse(Console.ReadLine());
-                m1.AddSell(sellitemno, sellitemcount);
+                mm1.AddSell(sellitemno, sellitemcount);
             }
-            static void EditProduct(MarketManager m1)
+            static void EditProduct(MarketManager mm1)
             {
                 Console.WriteLine("Enter the product code");
                 string productcode = Console.ReadLine();
                 Console.WriteLine("Enter new product code");
                 string newproductcode = Console.ReadLine();
-                m1.EditProduct(productcode, newproductcode);
+                mm1.EditProduct(productcode, newproductcode);
             }
 
-            static void RemoveProduct(MarketManager m1)
+            static void RemoveProduct(MarketManager mm1)
             {
                 Console.WriteLine("Enter the Product you want to remove");
                 string productcode = Console.ReadLine();
 
-                m1.RemoveProduct(productcode);
+                mm1.RemoveProduct(productcode);
 
 
             }

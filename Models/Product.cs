@@ -32,9 +32,6 @@ namespace SecondConsoleApp.Models
             ProductCode = productname.Substring(0, 2).Trim() + _Count.ToString();
 
 
-
-
-
         }
 
         public override string ToString()

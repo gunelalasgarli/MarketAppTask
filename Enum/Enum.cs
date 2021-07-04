@@ -15,5 +15,5 @@ namespace SecondConsoleApp.Enum
         sweets,
         cigarettes,
         household_cleaning
-    }
+    }//kategoriyalar yaradildi
 }
